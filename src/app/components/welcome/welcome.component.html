@@ -1,0 +1,8 @@
+<div class="welcomeDiv">
+  <h1>Splendex Memory Game</h1>
+  <label for="deck">Deck Size</label>
+  <select name="deck" id="deck" [(ngModel)]="selectedDeck">
+    <option *ngFor="let d of deckSizePairs">{{ d }}</option>
+  </select>
+  <button routerLink="/game/{{ selectedDeck }}">Start New Game</button>
+</div>

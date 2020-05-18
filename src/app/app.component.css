@@ -1,0 +1,11 @@
+* {
+  font-family: helvetica, courier, arial;
+}
+
+.header {
+  background: black;
+}
+
+.header img {
+  height: 3rem;
+}

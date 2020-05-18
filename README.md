@@ -1,27 +1,37 @@
-# Splendex
+Your task is to build a simple card-matching game, the kind that your brother/sister/best friend always cheated at when you were little. In case you need a reminder, here’s how it should work:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
+Present the user with an even number of cards, “face down”.
 
-## Development server
+When the user clicks a card, “flip it over” and reveal the hidden image.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+When two cards are revealed:
 
-## Code scaffolding
+If the cards are identical, remove them from play.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+If they are not, flip them back.
 
-## Build
+The game ends when all the cards are removed.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+To get full points, your app should also fulfill all of the below requirements:
 
-## Running unit tests
+It should be responsive.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+It should have a landing page for the app that explains the rules, and a separate screen for the actual game.
 
-## Running end-to-end tests
+We expect a SPA.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Allow the user to play more than one game without reloading the page.
 
-## Further help
+Allow the user to set the number of cards before a new game (min. 3, max. 10 pairs).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Present the user with a step counter that increments after every second card flip.
+
+Allow the user to continue the previously played game after reloading the page.
+
+We have attached some assets and a basic UI design scheme; implement them as closely as possible. Aside from that, use Angular framework. This is your project. Just make it happen.
+
+You need to deliver a working game that we can play through until the end, otherwise, we can’t evaluate your submission. It doesn’t have to be perfect but it cannot contain game-breaking bugs.
+
+We’ll be expecting your submission via a GitHub link. Please commit regularly, at least after each feature while you work.
+
+You have four hours, starting now.
