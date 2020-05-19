@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Card } from "src/app/models/card";
 
 @Component({
   selector: "app-game",
@@ -29,7 +30,8 @@ export class GameComponent implements OnInit {
     0,
     this.selectedPair
   );
-  finalBcgArr = [];
+  finalBcgArr: Card[] = [];
+  firstSelectedCard: Card;
 
   constructor(private router: Router) {}
 
@@ -39,8 +41,17 @@ export class GameComponent implements OnInit {
 
   duplicateArr() {
     for (let i = 0; i < this.neededBackGrounds.length; i++) {
-      this.finalBcgArr.push(this.neededBackGrounds[i]);
-      this.finalBcgArr.push(this.neededBackGrounds[i]);
+      let newCard = new Card();
+      newCard.id = i;
+      newCard.img = this.neededBackGrounds[i];
+      newCard.checked = false;
+      this.finalBcgArr.push(newCard);
+
+      let newCard2 = new Card();
+      newCard2.id = 50 + i;
+      newCard2.img = this.neededBackGrounds[i];
+      newCard2.checked = false;
+      this.finalBcgArr.push(newCard2);
     }
     this.shuffle(this.finalBcgArr);
     console.log(this.finalBcgArr);
@@ -64,5 +75,27 @@ export class GameComponent implements OnInit {
     }
 
     return array;
+  }
+
+  checkPicture(card: Card) {
+    if (!this.firstSelectedCard) {
+      card.checked = true;
+      this.firstSelectedCard = card;
+    } else if (
+      this.firstSelectedCard.img === card.img &&
+      this.firstSelectedCard.id !== card.id
+    ) {
+      this.finalBcgArr.forEach((element) => {
+        if (element.id === card.id) {
+          element.checked = true;
+        }
+      });
+      this.firstSelectedCard = undefined;
+      console.log("You have a pair!", this.finalBcgArr);
+    } else {
+      console.log(this.firstSelectedCard);
+      console.log(card);
+      console.log("Try again! ");
+    }
   }
 }

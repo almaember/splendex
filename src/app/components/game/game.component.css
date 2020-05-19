@@ -4,3 +4,11 @@
   border: 1px solid black;
   float: left;
 }
+
+.checked {
+  opacity: 1;
+}
+
+.notChecked {
+  opacity: 0.1;
+}

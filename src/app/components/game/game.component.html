@@ -1,3 +1,8 @@
 <div class="gameDiv">
-  <div *ngFor="let card of finalBcgArr">{{ card }}</div>
+  <div *ngFor="let card of finalBcgArr" (click)="checkPicture(card)">
+    <img
+      src="assets/img/{{ card.img }}.png"
+      [className]="card.checked ? 'checked' : 'notChecked'"
+    />
+  </div>
 </div>
