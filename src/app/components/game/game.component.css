@@ -1,0 +1,6 @@
+.gameDiv div {
+  width: 25%;
+  height: auto;
+  border: 1px solid black;
+  float: left;
+}
