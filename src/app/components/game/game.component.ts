@@ -48,7 +48,6 @@ export class GameComponent implements OnInit {
       let randomNum: number = Math.floor(Math.random() * this.bcgArrLength);
       this.finalBcgArr.push(this.neededBackGrounds[randomNum]);
     }
-    console.log("fck this: ", this.finalBcgArr);
 
     for (let i = 0; i < this.numberOfRows; i++) {
       this.cardsArr.push(new Column());
