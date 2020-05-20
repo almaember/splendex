@@ -33,6 +33,9 @@ export class GameComponent implements OnInit {
   finalBcgArr: Card[] = [];
   firstSelectedCard: Card;
 
+  // current tries
+  currentTriesCounter: number;
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -78,10 +81,13 @@ export class GameComponent implements OnInit {
   }
 
   checkPicture(card: Card) {
-    if (!this.firstSelectedCard) {
+    // First selected card check
+    if (!this.firstSelectedCard && card.checked !== true) {
       card.checked = true;
       this.firstSelectedCard = card;
+      // If second pick is matched with first pick
     } else if (
+      this.firstSelectedCard &&
       this.firstSelectedCard.img === card.img &&
       this.firstSelectedCard.id !== card.id
     ) {
@@ -92,9 +98,16 @@ export class GameComponent implements OnInit {
       });
       this.firstSelectedCard = undefined;
       console.log("You have a pair!", this.finalBcgArr);
+      // If second pick is NOT matched with first pick
     } else {
-      console.log(this.firstSelectedCard);
-      console.log(card);
+      if (this.firstSelectedCard) {
+        this.finalBcgArr.forEach((element) => {
+          if (element.id === this.firstSelectedCard.id) {
+            element.checked = false;
+          }
+        });
+        this.firstSelectedCard = undefined;
+      }
       console.log("Try again! ");
     }
   }

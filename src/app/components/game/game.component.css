@@ -1,4 +1,14 @@
-.gameDiv div {
+.gameHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 1 rem;
+}
+
+.gameHeader * {
+  margin: 1rem;
+}
+.gameDiv {
   width: 25%;
   height: auto;
   border: 1px solid black;
