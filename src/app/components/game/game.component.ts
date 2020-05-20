@@ -80,35 +80,56 @@ export class GameComponent implements OnInit {
     return array;
   }
 
-  checkPicture(card: Card) {
-    // First selected card check
-    if (!this.firstSelectedCard && card.checked !== true) {
-      card.checked = true;
-      this.firstSelectedCard = card;
-      // If second pick is matched with first pick
-    } else if (
-      this.firstSelectedCard &&
-      this.firstSelectedCard.img === card.img &&
-      this.firstSelectedCard.id !== card.id
-    ) {
+  // checkPicture => if
+  firstCardSelectFx(card: Card) {
+    card.checked = true;
+    this.firstSelectedCard = card;
+    console.log("First card selected!");
+  }
+
+  // checkPicture => else if
+  secondCardMatch(card: Card) {
+    this.finalBcgArr.forEach((element) => {
+      if (element.id === card.id) {
+        element.checked = true;
+      }
+    });
+    this.firstSelectedCard = undefined;
+    console.log("You have a pair!");
+  }
+
+  // checkPicture => else
+  notMatch() {
+    if (this.firstSelectedCard) {
       this.finalBcgArr.forEach((element) => {
-        if (element.id === card.id) {
-          element.checked = true;
+        if (element.id === this.firstSelectedCard.id) {
+          element.checked = false;
         }
       });
       this.firstSelectedCard = undefined;
-      console.log("You have a pair!", this.finalBcgArr);
+    }
+    console.log("Try again! ");
+  }
+
+  checkPicture(card: Card) {
+    let firstCardSelect: boolean =
+      !this.firstSelectedCard && card.checked !== true;
+    let secondCardMatch: boolean =
+      this.firstSelectedCard &&
+      this.firstSelectedCard.img === card.img &&
+      this.firstSelectedCard.id !== card.id;
+
+    // First selected card check
+    if (firstCardSelect) {
+      this.firstCardSelectFx(card);
+      // If second pick is matched with first pick
+    } else if (secondCardMatch) {
+      this.secondCardMatch(card);
       // If second pick is NOT matched with first pick
     } else {
-      if (this.firstSelectedCard) {
-        this.finalBcgArr.forEach((element) => {
-          if (element.id === this.firstSelectedCard.id) {
-            element.checked = false;
-          }
-        });
-        this.firstSelectedCard = undefined;
-      }
-      console.log("Try again! ");
+      this.notMatch();
     }
   }
+
+  countTries(card: Card) {}
 }
